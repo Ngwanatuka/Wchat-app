@@ -22,8 +22,13 @@ module.exports = {
                     exclude: /node_modules/,
                     use: {
                         loader: 'babel-loader'
-                    }
-            }
-        ]
+                    },
+            },
+        ],
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        port: 9000,
+        open: true
     }
 };
