@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
   // Style for OR lines
 
   orContainer: {
+    width: '31.28794rem',
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -179,6 +180,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "1px",
     background: "#ddd",
+    width: '13.08488rem',
   },
   orText: {
     margin: "0 10px",
