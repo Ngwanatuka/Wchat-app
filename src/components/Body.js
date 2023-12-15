@@ -52,7 +52,7 @@ const Body = () => {
           {/* OR Lines */}
           <div className={css(styles.orContainer)}>
             <div className={css(styles.orLine)}></div>
-            <span className={css(styles.orText)}>or</span>
+            <span className={css(styles.orText)}>OR</span>
             <div className={css(styles.orLine)}></div>
           </div>
           {/* Fields */}
@@ -71,7 +71,7 @@ const Body = () => {
             <div className={css(styles.checkBox)}>
               <label>
                 <input type="checkbox" />
-                Remember me
+                Forgot Password?
               </label>
             </div>
             {/* Login Button */}
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "500",
     lineHeight: "normal",
-    fontSize: "1.5rem",
     fontStyle: "normal",
     textAlign: "center",
   },
@@ -209,6 +208,7 @@ const styles = StyleSheet.create({
   checkBox: {
     marginTop: '20px',
     marginBottom: '20px',
+    color: '#0986CC',
   },
 
   // Style for the login button
