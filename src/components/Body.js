@@ -70,7 +70,6 @@ const Body = () => {
             {/* Checkbox */}
             <div className={css(styles.checkBox)}>
               <label>
-                <input type="checkbox" />
                 Forgot Password?
               </label>
             </div>
