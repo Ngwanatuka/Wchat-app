@@ -1,6 +1,9 @@
 import React from "react";
 import "../styles/font.css";
 import { StyleSheet, css } from "aphrodite";
+import instagramIcon from "../assets/Instagram.png";
+import faceBookIcon from "../assets/facebook.png";
+import googleIcon from "../assets/Google.png";
 
 const Body = () => {
   return (
@@ -29,19 +32,19 @@ const Body = () => {
               <div className={css(styles.icon)}>
                 <a href="#">
                   {/* Google Icon */}
-                  <img src="google-icon.png" alt="Google" />
+                  <img src={googleIcon} alt="Google" />
                 </a>
               </div>
               <div className={css(styles.icon)}>
                 <a href="#">
                   {/* Facebook Icon */}
-                  <img src="facebook-icon.png" alt="Facebook" />
+                  <img src={faceBookIcon} alt="Facebook" />
                 </a>
               </div>
               <div className={css(styles.icon)}>
                 <a href="#">
-                  {/* LinkedIn Icon */}
-                  <img src="linkedin-icon.png" alt="LinkedIn" />
+                  {/* instagram */}
+                  <img src={instagramIcon} alt="Instagram" />
                 </a>
               </div>
             </div>
@@ -65,7 +68,7 @@ const Body = () => {
               <input type="password" placeholder="Enter your password" />
             </div>
             {/* Checkbox */}
-            <div className={css(styles.inputContainer)}>
+            <div className={css(styles.checkBox)}>
               <label>
                 <input type="checkbox" />
                 Remember me
@@ -140,17 +143,27 @@ const styles = StyleSheet.create({
   signinText: {
     fontSize: "0.875rem",
     fontWeight: "small",
+    marginBottom: '20px',
   },
 
   iconContainer: {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "20px",
+    width: '31.03663rem',
+    height: '3.5rem',
+    flexShrink: "0",
   },
 
-  icon: {
+  icon: {                         
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "8.16756rem",
+    height: '3.5rem',
     borderRadius: "5px",
     border: "1px solid #ddd",
+    flexShrink: "0",
   },
 
   // Style for OR lines
@@ -176,15 +189,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     marginBottom: "20px",
+    width: '31.28794rem',
   },
-  // Style for label and input
-  inputContainer: {
-    marginBottom: "10px",
-  },
-  inputLabel: {
-    marginBottom: "5px",
-    fontWeight: "bold",
-  },
+  
 
   // Style for label and input
   inputContainer: {
@@ -193,7 +200,15 @@ const styles = StyleSheet.create({
   inputLabel: {
     marginBottom: "5px",
     fontWeight: "bold",
+    width: '31.28794rem',
   },
+
+  // checkBox
+  checkBox: {
+    marginTop: '20px',
+    marginBottom: '20px',
+  },
+
   // Style for the login button
   loginButton: {
     backgroundColor: "#0986CC",
@@ -202,6 +217,7 @@ const styles = StyleSheet.create({
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+    width: '31.03663rem',
   },
 });
 
