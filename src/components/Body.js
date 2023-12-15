@@ -25,7 +25,7 @@ const Body = () => {
           <div>
             {/* Information and Links */}
             <div className={css(styles.signinText)}>
-              Don't have an account? Let's <a href="#">Get started</a>
+              Don't have an account? Let's <a className={css(styles.getStartedLink)} href="#">Get started</a>
             </div>
             {/* Icons */}
             <div className={css(styles.iconContainer)}>
@@ -143,6 +143,12 @@ const styles = StyleSheet.create({
     fontSize: "0.875rem",
     fontWeight: "small",
     marginBottom: '20px',
+  },
+
+  getStartedLink: {
+    textDecoration: 'none',
+    color: '#0986CC',
+    fontWeight: 'bold',
   },
 
   iconContainer: {
