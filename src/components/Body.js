@@ -21,23 +21,29 @@ const Body = () => {
           </div>
           <div>
             {/* Information and Links */}
-            <div>
+            <div className={css(styles.signinText)}>
               Don't have an account? Let's <a href="#">Get started</a>
             </div>
             {/* Icons */}
             <div className={css(styles.iconContainer)}>
-              <a href="#">
-                {/* Google Icon */}
-                <img src="google-icon.png" alt="Google" />
-              </a>
-              <a href="#">
-                {/* Facebook Icon */}
-                <img src="facebook-icon.png" alt="Facebook" />
-              </a>
-              <a href="#">
-                {/* LinkedIn Icon */}
-                <img src="linkedin-icon.png" alt="LinkedIn" />
-              </a>
+              <div className={css(styles.icon)}>
+                <a href="#">
+                  {/* Google Icon */}
+                  <img src="google-icon.png" alt="Google" />
+                </a>
+              </div>
+              <div className={css(styles.icon)}>
+                <a href="#">
+                  {/* Facebook Icon */}
+                  <img src="facebook-icon.png" alt="Facebook" />
+                </a>
+              </div>
+              <div className={css(styles.icon)}>
+                <a href="#">
+                  {/* LinkedIn Icon */}
+                  <img src="linkedin-icon.png" alt="LinkedIn" />
+                </a>
+              </div>
             </div>
           </div>
           {/* OR Lines */}
@@ -129,10 +135,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: "20px",
   },
+
+  // signinText
+  signinText: {
+    fontSize: "0.875rem",
+    fontWeight: "small",
+  },
+
   iconContainer: {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "20px",
+  },
+
+  icon: {
+    borderRadius: "5px",
+    border: "1px solid #ddd",
   },
 
   // Style for OR lines
