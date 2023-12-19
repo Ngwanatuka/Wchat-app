@@ -1,4 +1,4 @@
-import React from "react";
+import React, { userState } from "react";
 import "../styles/font.css";
 import { StyleSheet, css } from "aphrodite";
 import instagramIcon from "../assets/Instagram.png";
@@ -6,6 +6,24 @@ import faceBookIcon from "../assets/facebook.png";
 import googleIcon from "../assets/Google.png";
 
 const Body = () => {
+  const [email, setEmail] = userState("");
+  const [password, setPassword] = userState("");
+  const [isSignUp, setIsSignUp] = userState(false);
+
+  const toggleSignUpMode = () => {
+    setIsSignUp(!isSignUp);
+  };
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      alert("Please fill in your email and password");
+      return;
+    }
+
+    console.log("Email: ", email);
+    console.log("Password: ", password);
+  };
+
   return (
     <div className={css(styles.body)}>
       <div className={css(styles.leftContainer)}>
@@ -20,12 +38,20 @@ const Body = () => {
         <div className={css(styles.loginContainer)}>
           <div>
             {/* Title: Log in to Wchat */}
-            <div className={css(styles.loginTitle)}>Log in to Wchat</div>
+            <div className={css(styles.loginTitle)}>
+              {isSignUp ? "Sign Up to Wchat" : "Log in to Wchat"}
+            </div>
           </div>
           <div>
             {/* Information and Links */}
             <div className={css(styles.signinText)}>
-              Don't have an account? Let's <a className={css(styles.getStartedLink)} href="#">Get started</a>
+              Don't have an account? Let's{" "}
+              <a
+                className={css(styles.getStartedLink)}
+                onClick={toggleSignUpMode}
+              >
+                {isSignUp ? "Sign In" : "Get Started"}
+              </a>
             </div>
             {/* Icons */}
             <div className={css(styles.iconContainer)}>
@@ -59,23 +85,33 @@ const Body = () => {
           <div className={css(styles.fieldsContainer)}>
             {/* Email Address */}
             <div className={css(styles.inputContainer)}>
-              <label className={css(styles.inputLabel)}></label>
-              <input type="text" placeholder="Enter your email" />
+              <label className={css(styles.inputLabel)}>Email:</label>
+              <input
+                type="text"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             {/* Password */}
             <div className={css(styles.inputContainer)}>
-              <label className={css(styles.inputLabel)}></label>
-              <input type="password" placeholder="Enter your password" />
+              <label className={css(styles.inputLabel)}>Password:</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             {/* Checkbox */}
             <div className={css(styles.checkBox)}>
-              <label>
-                Forgot Password?
-              </label>
+              <label>Forgot Password?</label>
             </div>
             {/* Login Button */}
             <div>
-              <button className={css(styles.loginButton)}>Login</button>
+              <button className={css(styles.loginButton)} onClick={handleLogin}>
+                Login
+              </button>
             </div>
           </div>
         </div>
@@ -141,30 +177,30 @@ const styles = StyleSheet.create({
   signinText: {
     fontSize: "0.875rem",
     fontWeight: "small",
-    marginBottom: '20px',
+    marginBottom: "20px",
   },
 
   getStartedLink: {
-    textDecoration: 'none',
-    color: '#0986CC',
-    fontWeight: 'bold',
+    textDecoration: "none",
+    color: "#0986CC",
+    fontWeight: "bold",
   },
 
   iconContainer: {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "20px",
-    width: '31.03663rem',
-    height: '3.5rem',
+    width: "31.03663rem",
+    height: "3.5rem",
     flexShrink: "0",
   },
 
-  icon: {                         
+  icon: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     width: "8.16756rem",
-    height: '3.5rem',
+    height: "3.5rem",
     borderRadius: "5px",
     border: "1px solid #ddd",
     flexShrink: "0",
@@ -173,7 +209,7 @@ const styles = StyleSheet.create({
   // Style for OR lines
 
   orContainer: {
-    width: '31.28794rem',
+    width: "31.28794rem",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -184,7 +220,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "1px",
     background: "#ddd",
-    width: '13.08488rem',
+    width: "13.08488rem",
   },
   orText: {
     margin: "0 10px",
@@ -195,9 +231,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     marginBottom: "20px",
-    width: '31.28794rem',
+    width: "31.28794rem",
   },
-  
 
   // Style for label and input
   inputContainer: {
@@ -206,14 +241,14 @@ const styles = StyleSheet.create({
   inputLabel: {
     marginBottom: "5px",
     fontWeight: "bold",
-    width: '31.28794rem',
+    width: "31.28794rem",
   },
 
   // checkBox
   checkBox: {
-    marginTop: '20px',
-    marginBottom: '20px',
-    color: '#0986CC',
+    marginTop: "20px",
+    marginBottom: "20px",
+    color: "#0986CC",
   },
 
   // Style for the login button
@@ -224,7 +259,7 @@ const styles = StyleSheet.create({
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
-    width: '31.03663rem',
+    width: "31.03663rem",
   },
 });
 
