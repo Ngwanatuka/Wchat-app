@@ -110,7 +110,7 @@ const Body = () => {
             {/* Login Button */}
             <div>
               <button className={css(styles.loginButton)} onClick={handleLogin}>
-                Login
+                {isSignUp ? "Sign Up" : "Log In"}
               </button>
             </div>
           </div>
