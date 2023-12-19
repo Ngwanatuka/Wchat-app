@@ -58,14 +58,16 @@ const Body = () => {
           <div>
             {/* Information and Links */}
             <div className={css(styles.signinText)}>
-              Don't have an account? Let's{" "}
-              <a
-                className={css(styles.getStartedLink)}
-                onClick={toggleSignUpMode}
-              >
-                {isSignUp ? "Sign In" : "Get Started"}
-              </a>
-            </div>
+            {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+            {" "}
+            <a
+              className={css(styles.getStartedLink)}
+              href="#"
+              onClick={toggleSignUpMode}
+            >
+              {isSignUp ? "Log in" : "Get started"}
+            </a>
+          </div>
             {/* Icons */}
             <div className={css(styles.iconContainer)}>
               <div className={css(styles.icon)}>
