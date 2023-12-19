@@ -1,4 +1,4 @@
-import React, { userState } from "react";
+import React, { useState } from "react";
 import "../styles/font.css";
 import { StyleSheet, css } from "aphrodite";
 import instagramIcon from "../assets/Instagram.png";
@@ -6,9 +6,9 @@ import faceBookIcon from "../assets/facebook.png";
 import googleIcon from "../assets/Google.png";
 
 const Body = () => {
-  const [email, setEmail] = userState("");
-  const [password, setPassword] = userState("");
-  const [isSignUp, setIsSignUp] = userState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const toggleSignUpMode = () => {
     setIsSignUp(!isSignUp);
@@ -184,6 +184,7 @@ const styles = StyleSheet.create({
     textDecoration: "none",
     color: "#0986CC",
     fontWeight: "bold",
+    cursor: "pointer",
   },
 
   iconContainer: {
