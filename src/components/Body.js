@@ -100,7 +100,7 @@ const Body = () => {
           <div className={css(styles.fieldsContainer)}>
             {/* Email Address */}
             <div className={css(styles.inputContainer)}>
-              <label className={css(styles.inputLabel)}>Email:</label>
+              <label className={css(styles.inputLabel)}></label>
               <input
                 type="text"
                 placeholder="Enter your email"
@@ -109,15 +109,31 @@ const Body = () => {
               />
             </div>
             {/* Password */}
-            <div className={css(styles.inputContainer)}>
-              <label className={css(styles.inputLabel)}>Password:</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+            {(isSignUp || !isSignUp) && (
+          <div className={css(styles.inputContainer)}>
+            <label className={css(styles.inputLabel)}>
+              {isSignUp ? "" : ""}
+            </label>
+            <input
+              type="password"
+              placeholder={isSignUp ? "Enter your password" : "Enter your password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        )}
+        {/* Additional Confirm Password field for Sign-Up */}
+        {isSignUp && (
+          <div className={css(styles.inputContainer)}>
+            <label className={css(styles.inputLabel)}></label>
+            <input
+              type="password"
+              placeholder="Confirm your password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+        )}
             {/* Checkbox */}
             <div className={css(styles.checkBox)}>
               <label>Forgot Password?</label>
