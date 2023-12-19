@@ -9,6 +9,7 @@ const Body = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const toggleSignUpMode = () => {
     setIsSignUp(!isSignUp);
@@ -22,6 +23,18 @@ const Body = () => {
 
     console.log("Email: ", email);
     console.log("Password: ", password);
+
+    if (isSignUp) {
+      if (!confirmPassword) {
+        alert("Please confirm your password");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+    }
   };
 
   return (
