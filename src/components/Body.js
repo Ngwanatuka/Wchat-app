@@ -154,11 +154,13 @@ const Body = () => {
   );
 };
 
+// ... (existing code) ...
+
 const styles = StyleSheet.create({
   body: {
     display: "flex",
     width: "100%",
-    height: "calc(100vh - 60px)",
+    height: "calc(100vh - 3.75rem)", // 60px in rem
     backgroundColor: "#F1F1F1",
   },
   leftContainer: {
@@ -197,21 +199,21 @@ const styles = StyleSheet.create({
   },
   loginContainer: {
     width: "50%",
-    padding: "20px",
-    borderRadius: "5px",
-    margin: "20px",
+    padding: "1.25rem", // 20px in rem
+    borderRadius: "0.3125rem", // 5px in rem
+    margin: "1.25rem", // 20px in rem
   },
   loginTitle: {
     fontSize: "1.5rem",
     fontWeight: "bold",
-    marginBottom: "20px",
+    marginBottom: "1.25rem", // 20px in rem
   },
 
   // signinText
   signinText: {
     fontSize: "0.875rem",
     fontWeight: "small",
-    marginBottom: "20px",
+    marginBottom: "1.25rem", // 20px in rem
   },
 
   getStartedLink: {
@@ -224,7 +226,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: "20px",
+    marginBottom: "1.25rem", // 20px in rem
     width: "31.03663rem",
     height: "3.5rem",
     flexShrink: "0",
@@ -236,8 +238,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "8.16756rem",
     height: "3.5rem",
-    borderRadius: "5px",
-    border: "1px solid #ddd",
+    borderRadius: "0.3125rem", // 5px in rem
+    border: "0.0625rem solid #ddd", // 1px in rem
     flexShrink: "0",
   },
 
@@ -248,24 +250,24 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    margin: "20px 0",
+    margin: "1.25rem 0", // 20px in rem
     position: "relative",
   },
   orLine: {
     flex: 1,
-    height: "1px",
+    height: "0.0625rem", // 1px in rem
     background: "#ddd",
     width: "13.08488rem",
   },
   orText: {
-    margin: "0 10px",
+    margin: "0 1rem", // 10px in rem
     color: "#555",
   },
 
   fieldsContainer: {
     // display: "flex",
     // flexDirection: "column",
-    // marginBottom: "20px",
+    // marginBottom: "1.25rem", // 20px in rem
   },
 
   // Style for label and input
@@ -275,14 +277,14 @@ const styles = StyleSheet.create({
     width: "31.03663rem",
     height: "4.0625rem",
     fontSize: "1rem",
-    borderRadius: "5px",
-    border: "1px solid #ddd",
-    padding: "0 20px",
+    borderRadius: "0.3125rem", // 5px in rem
+    border: "0.0625rem solid #ddd", // 1px in rem
+    padding: "0 1.25rem", // 20px in rem
   },
 
   inputContainer: {
     display: "flex",
-    marginBottom: "20px",
+    marginBottom: "1.25rem", // 20px in rem
     
     width: "31.03663rem",
     height: "4.0625rem",
@@ -294,8 +296,8 @@ const styles = StyleSheet.create({
 
   // checkBox
   checkBox: {
-    marginTop: "20px",
-    marginBottom: "20px",
+    marginTop: "1.25rem", // 20px in rem
+    marginBottom: "1.25rem", // 20px in rem
     color: "#0986CC",
   },
 
@@ -303,9 +305,9 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: "#0986CC",
     color: "white",
-    padding: "10px",
+    padding: "1.25rem", // 20px in rem
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "0.3125rem", // 5px in rem
     cursor: "pointer",
     width: "31.03663rem",
   },
