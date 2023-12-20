@@ -102,6 +102,7 @@ const Body = () => {
             <div className={css(styles.inputContainer)}>
               <label className={css(styles.inputLabel)}></label>
               <input
+              className={css(styles.input)}
                 type="text"
                 placeholder="Enter your email"
                 value={email}
@@ -115,6 +116,7 @@ const Body = () => {
               {isSignUp ? "" : ""}
             </label>
             <input
+            className={css(styles.input)}
               type="password"
               placeholder={isSignUp ? "Enter your password" : "Enter your password"}
               value={password}
@@ -127,6 +129,7 @@ const Body = () => {
           <div className={css(styles.inputContainer)}>
             <label className={css(styles.inputLabel)}></label>
             <input
+            className={css(styles.input)}
               type="password"
               placeholder="Confirm your password"
               value={confirmPassword}
@@ -260,20 +263,33 @@ const styles = StyleSheet.create({
   },
 
   fieldsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: "20px",
-    width: "31.28794rem",
+    // display: "flex",
+    // flexDirection: "column",
+    // marginBottom: "20px",
   },
 
   // Style for label and input
+  
+  input: {
+    border: "none",
+    width: "31.03663rem",
+    height: "4.0625rem",
+    fontSize: "1rem",
+    borderRadius: "5px",
+    border: "1px solid #ddd",
+    padding: "0 20px",
+  },
+
   inputContainer: {
-    marginBottom: "10px",
+    display: "flex",
+    marginBottom: "20px",
+    
+    width: "31.03663rem",
+    height: "4.0625rem",
+  
   },
   inputLabel: {
-    marginBottom: "5px",
-    fontWeight: "bold",
-    width: "31.28794rem",
+    display: "block",
   },
 
   // checkBox
