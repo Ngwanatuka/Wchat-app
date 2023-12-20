@@ -4,18 +4,35 @@ import { StyleSheet, css } from "aphrodite";
 import instagramIcon from "../assets/Instagram.png";
 import faceBookIcon from "../assets/facebook.png";
 import googleIcon from "../assets/Google.png";
+import UserProfile from "./UserProfile";
 
 const Body = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [user, setUser] = useState(null);
 
   const toggleSignUpMode = () => {
     setIsSignUp(!isSignUp);
   };
 
-  const handleLogin = () => {
+  const signUpFunction = async (email, password) => {
+    try {
+      const userObj = {
+        id: 1,
+        email,
+        password,
+      };
+
+      return userObj;
+    } catch (error) {
+      console.log("Sign up error: ", error);
+      return null;
+    }
+  };
+
+  const handleLogin = async () => {
     if (!email || !password) {
       alert("Please fill in your email and password");
       return;
@@ -34,6 +51,17 @@ const Body = () => {
         alert("Passwords do not match");
         return;
       }
+
+      // Call the mock sign up function
+      const userObject = await signUpFunction(email, password);
+
+      if (!userObject) {
+        // Sign up failed
+        alert("Sign up failed");
+        return;
+      }
+
+      setUser(userObject);
     }
   };
 
@@ -58,16 +86,15 @@ const Body = () => {
           <div>
             {/* Information and Links */}
             <div className={css(styles.signinText)}>
-            {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
-            {" "}
-            <a
-              className={css(styles.getStartedLink)}
-              href="#"
-              onClick={toggleSignUpMode}
-            >
-              {isSignUp ? "Log in" : "Get started"}
-            </a>
-          </div>
+              {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+              <a
+                className={css(styles.getStartedLink)}
+                href="#"
+                onClick={toggleSignUpMode}
+              >
+                {isSignUp ? "Log in" : "Get started"}
+              </a>
+            </div>
             {/* Icons */}
             <div className={css(styles.iconContainer)}>
               <div className={css(styles.icon)}>
@@ -102,7 +129,7 @@ const Body = () => {
             <div className={css(styles.inputContainer)}>
               <label className={css(styles.inputLabel)}></label>
               <input
-              className={css(styles.input)}
+                className={css(styles.input)}
                 type="text"
                 placeholder="Enter your email"
                 value={email}
@@ -111,32 +138,34 @@ const Body = () => {
             </div>
             {/* Password */}
             {(isSignUp || !isSignUp) && (
-          <div className={css(styles.inputContainer)}>
-            <label className={css(styles.inputLabel)}>
-              {isSignUp ? "" : ""}
-            </label>
-            <input
-            className={css(styles.input)}
-              type="password"
-              placeholder={isSignUp ? "Enter your password" : "Enter your password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        )}
-        {/* Additional Confirm Password field for Sign-Up */}
-        {isSignUp && (
-          <div className={css(styles.inputContainer)}>
-            <label className={css(styles.inputLabel)}></label>
-            <input
-            className={css(styles.input)}
-              type="password"
-              placeholder="Confirm your password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-        )}
+              <div className={css(styles.inputContainer)}>
+                <label className={css(styles.inputLabel)}>
+                  {isSignUp ? "" : ""}
+                </label>
+                <input
+                  className={css(styles.input)}
+                  type="password"
+                  placeholder={
+                    isSignUp ? "Enter your password" : "Enter your password"
+                  }
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            )}
+            {/* Additional Confirm Password field for Sign-Up */}
+            {isSignUp && (
+              <div className={css(styles.inputContainer)}>
+                <label className={css(styles.inputLabel)}></label>
+                <input
+                  className={css(styles.input)}
+                  type="password"
+                  placeholder="Confirm your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+            )}
             {/* Checkbox */}
             <div className={css(styles.checkBox)}>
               <label>Forgot Password?</label>
@@ -271,7 +300,7 @@ const styles = StyleSheet.create({
   },
 
   // Style for label and input
-  
+
   input: {
     border: "none",
     width: "31.03663rem",
@@ -285,10 +314,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     display: "flex",
     marginBottom: "1.25rem", // 20px in rem
-    
+
     width: "31.03663rem",
     height: "4.0625rem",
-  
   },
   inputLabel: {
     display: "block",
