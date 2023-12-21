@@ -9,7 +9,7 @@ import UserProfile from "./UserProfile";
 const Body = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user, setUser] = useState(null);
 

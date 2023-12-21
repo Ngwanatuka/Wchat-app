@@ -40,7 +40,7 @@ module.exports = {
         static: path.resolve(__dirname, 'public'),
         port: 9000,
         open: true,
-        // hot: true
+        hot: true
     },
     plugins: [
         new HtmlWebpackPlugin({

@@ -8,7 +8,7 @@ const LandingPage = (isSignUp) => {
   
   return (
     <div className={css(styles.landingPage)}>
-      {!isSignUp && <Header />}
+      <Header />
       {isSignUp ? <Body />: <UserProfile /> }
     </div>
   );
