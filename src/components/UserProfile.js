@@ -30,6 +30,11 @@ const UserProfile = ({ userEmail }) => {
 
   return (
     <div className={css(styles.userProfile)}>
+      <div className={css(styles.leftContainer)}>
+        <h1 className={css(styles.welcomeMessage)}>
+          Welcome to Wchat! Feel free to edit your profile.
+        </h1>
+      </div>
       <div className={css(styles.profileContainer)}>
         <div className={css(styles.userInfo)}>
           <div className={css(styles.profileInfo)}>
@@ -108,11 +113,23 @@ const styles = StyleSheet.create({
   userProfile: {
     textAlign: 'center',
     display: 'flex',
-    justifyContent: 'right',
-    alignItems: 'center',
     width: '100%',
     backgroundColor: '#0986CC',
     fontFamily: 'Poppins, sans-serif',
+  },
+
+  leftContainer: {
+    width: '35%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  welcomeMessage: {
+    color: 'white',
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    lineHeight: '1.5',
   },
 
   profileContainer: {
@@ -137,8 +154,8 @@ const styles = StyleSheet.create({
 
   profilePhoto: {
     position: 'relative',
-    width: '100px',
-    height: '100px',
+    width: '50px',
+    height: '50px',
     borderRadius: '50%',
     overflow: 'hidden',
     marginRight: '10px',
