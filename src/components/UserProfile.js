@@ -6,7 +6,9 @@ import { StyleSheet, css } from 'aphrodite';
 const UserProfile = ({ userEmail }) => {
   return (
     <div className={css(styles.userProfile)}>
-      <div className={css(styles.profileContainer)}></div>
+      <div className={css(styles.profileContainer)}>
+        <h2>{userEmail}</h2>
+      </div>
     </div>
   );
 };

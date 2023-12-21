@@ -2,12 +2,14 @@ import React from "react";
 import Header from "./Header";
 import Body from "./Body";
 import { StyleSheet, css } from "aphrodite";
+import UserProfile from "./UserProfile";
 
-const LandingPage = () => {
+const LandingPage = (isSignUp) => {
+  
   return (
     <div className={css(styles.landingPage)}>
-      <Header />
-      <Body />
+      {!isSignUp && <Header />}
+      {isSignUp ? <Body />: <UserProfile /> }
     </div>
   );
 };
