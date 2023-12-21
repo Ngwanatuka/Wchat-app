@@ -27,6 +27,7 @@ const Body = () => {
         password,
       };
 
+      setUser(userObj)
       return userObj;
     } catch (error) {
       console.log("Sign up error: ", error);
