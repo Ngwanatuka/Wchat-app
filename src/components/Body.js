@@ -52,12 +52,12 @@ const Body = () => {
         return;
       }
 
-      // Call the mock sign up function
+      // Call the mock sign-up function
       const userObject = await signUpFunction(email, password);
 
       if (!userObject) {
-        // Sign up failed
-        alert("Sign up failed");
+        // Sign-up failed
+        alert("Sign-up failed");
         return;
       }
 
@@ -75,115 +75,120 @@ const Body = () => {
         </div>
       </div>
       <div className={css(styles.rightContainer)}>
-        {/* Login Container */}
-        <div className={css(styles.loginContainer)}>
-          <div>
-            {/* Title: Log in to Wchat */}
-            <div className={css(styles.loginTitle)}>
-              {isSignUp ? "Sign Up to Wchat" : "Log in to Wchat"}
+        {user ? (
+          <UserProfile userEmail={user.email} />
+        ) : (
+          /* Login Container */
+          <div className={css(styles.loginContainer)}>
+            <div>
+              {/* Title: Log in to Wchat */}
+              <div className={css(styles.loginTitle)}>
+                {isSignUp ? "Sign Up to Wchat" : "Log in to Wchat"}
+              </div>
             </div>
-          </div>
-          <div>
-            {/* Information and Links */}
-            <div className={css(styles.signinText)}>
-              {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
-              <a
-                className={css(styles.getStartedLink)}
-                href="#"
-                onClick={toggleSignUpMode}
-              >
-                {isSignUp ? "Log in" : "Get started"}
-              </a>
-            </div>
-            {/* Icons */}
-            <div className={css(styles.iconContainer)}>
-              <div className={css(styles.icon)}>
-                <a href="#">
-                  {/* Google Icon */}
-                  <img src={googleIcon} alt="Google" />
+            <div>
+              {/* Information and Links */}
+              <div className={css(styles.signinText)}>
+                {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+                <a
+                  className={css(styles.getStartedLink)}
+                  href="#"
+                  onClick={toggleSignUpMode}
+                >
+                  {isSignUp ? "Log in" : "Get started"}
                 </a>
               </div>
-              <div className={css(styles.icon)}>
-                <a href="#">
-                  {/* Facebook Icon */}
-                  <img src={faceBookIcon} alt="Facebook" />
-                </a>
-              </div>
-              <div className={css(styles.icon)}>
-                <a href="#">
-                  {/* instagram */}
-                  <img src={instagramIcon} alt="Instagram" />
-                </a>
+              {/* Icons */}
+              <div className={css(styles.iconContainer)}>
+                <div className={css(styles.icon)}>
+                  <a href="#">
+                    {/* Google Icon */}
+                    <img src={googleIcon} alt="Google" />
+                  </a>
+                </div>
+                <div className={css(styles.icon)}>
+                  <a href="#">
+                    {/* Facebook Icon */}
+                    <img src={faceBookIcon} alt="Facebook" />
+                  </a>
+                </div>
+                <div className={css(styles.icon)}>
+                  <a href="#">
+                    {/* Instagram */}
+                    <img src={instagramIcon} alt="Instagram" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          {/* OR Lines */}
-          <div className={css(styles.orContainer)}>
-            <div className={css(styles.orLine)}></div>
-            <span className={css(styles.orText)}>OR</span>
-            <div className={css(styles.orLine)}></div>
-          </div>
-          {/* Fields */}
-          <div className={css(styles.fieldsContainer)}>
-            {/* Email Address */}
-            <div className={css(styles.inputContainer)}>
-              <label className={css(styles.inputLabel)}></label>
-              <input
-                className={css(styles.input)}
-                type="text"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+            {/* OR Lines */}
+            <div className={css(styles.orContainer)}>
+              <div className={css(styles.orLine)}></div>
+              <span className={css(styles.orText)}>OR</span>
+              <div className={css(styles.orLine)}></div>
             </div>
-            {/* Password */}
-            {(isSignUp || !isSignUp) && (
-              <div className={css(styles.inputContainer)}>
-                <label className={css(styles.inputLabel)}>
-                  {isSignUp ? "" : ""}
-                </label>
-                <input
-                  className={css(styles.input)}
-                  type="password"
-                  placeholder={
-                    isSignUp ? "Enter your password" : "Enter your password"
-                  }
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-            )}
-            {/* Additional Confirm Password field for Sign-Up */}
-            {isSignUp && (
+            {/* Fields */}
+            <div className={css(styles.fieldsContainer)}>
+              {/* Email Address */}
               <div className={css(styles.inputContainer)}>
                 <label className={css(styles.inputLabel)}></label>
                 <input
                   className={css(styles.input)}
-                  type="password"
-                  placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  type="text"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-            )}
-            {/* Checkbox */}
-            <div className={css(styles.checkBox)}>
-              <label>Forgot Password?</label>
-            </div>
-            {/* Login Button */}
-            <div>
-              <button className={css(styles.loginButton)} onClick={handleLogin}>
-                {isSignUp ? "Sign Up" : "Log In"}
-              </button>
+              {/* Password */}
+              {(isSignUp || !isSignUp) && (
+                <div className={css(styles.inputContainer)}>
+                  <label className={css(styles.inputLabel)}>
+                    {isSignUp ? "" : ""}
+                  </label>
+                  <input
+                    className={css(styles.input)}
+                    type="password"
+                    placeholder={
+                      isSignUp ? "Enter your password" : "Enter your password"
+                    }
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              )}
+              {/* Additional Confirm Password field for Sign-Up */}
+              {isSignUp && (
+                <div className={css(styles.inputContainer)}>
+                  <label className={css(styles.inputLabel)}></label>
+                  <input
+                    className={css(styles.input)}
+                    type="password"
+                    placeholder="Confirm your password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
+              )}
+              {/* Checkbox */}
+              <div className={css(styles.checkBox)}>
+                <label>Forgot Password?</label>
+              </div>
+              {/* Login Button */}
+              <div>
+                <button
+                  className={css(styles.loginButton)}
+                  onClick={handleLogin}
+                >
+                  {isSignUp ? "Sign Up" : "Log In"}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
 };
-
-// ... (existing code) ...
 
 const styles = StyleSheet.create({
   body: {
