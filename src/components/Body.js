@@ -5,13 +5,15 @@ import instagramIcon from "../assets/Instagram.png";
 import faceBookIcon from "../assets/facebook.png";
 import googleIcon from "../assets/Google.png";
 import UserProfile from "./UserProfile";
+import Dashboard from "./Dashboard";
 
 const Body = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleSignUpMode = () => {
     setIsSignUp(!isSignUp);
@@ -33,8 +35,20 @@ const Body = () => {
   };
 
   const handleLogin = async () => {
+    let alertMessage = "";
+
     if (!email || !password) {
-      alert("Please fill in your email and password");
+      alertMessage = "Please fill in your email and password";
+    } else if (isSignUp) {
+      if (!confirmPassword) {
+        alertMessage = "Please confirm your password";
+      } else if (password !== confirmPassword) {
+        alertMessage = "Passwords do not match";
+      }
+    }
+
+    if (alertMessage) {
+      alert(alertMessage);
       return;
     }
 
@@ -42,28 +56,31 @@ const Body = () => {
     console.log("Password: ", password);
 
     if (isSignUp) {
-      if (!confirmPassword) {
-        alert("Please confirm your password");
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-      }
-
-      // Call the mock sign-up function
       const userObject = await signUpFunction(email, password);
 
       if (!userObject) {
-        // Sign-up failed
         alert("Sign-up failed");
         return;
       }
 
       setUser(userObject);
     }
+
+    // Log in successful, set isLoggedIn to true
+    setIsLoggedIn(true);
   };
+
+  // Render Dashboard when the  user is logged in
+  if (isLoggedIn && user) {
+    return (
+      <Dashboard
+        userName={user.email}
+        department="IT"
+        profession="Software Engineer"
+        aboutMe="I am a software engineer"
+      />
+    );
+  }
 
   return (
     <div className={css(styles.body)}>
@@ -181,8 +198,13 @@ const Body = () => {
                   <button
                     className={css(styles.loginButton)}
                     onClick={handleLogin}
+                    disabled={isLoggedIn} // Disable the button when the user is logged in or during the login process
                   >
-                    {isSignUp ? "Sign Up" : "Log In"}
+                    {isLoggedIn
+                      ? "Logging in..."
+                      : isSignUp
+                      ? "Sign Up"
+                      : "Log In"}
                   </button>
                 </div>
               </div>
