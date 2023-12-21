@@ -6,8 +6,7 @@ import { StyleSheet, css } from 'aphrodite';
 const UserProfile = ({ userEmail }) => {
   return (
     <div className={css(styles.userProfile)}>
-      <h2>Welcome, {userEmail}!</h2>
-      {/* Add more user information or actions here */}
+      <div className={css(styles.profileContainer)}></div>
     </div>
   );
 };
@@ -15,8 +14,21 @@ const UserProfile = ({ userEmail }) => {
 const styles = StyleSheet.create({
   userProfile: {
     textAlign: 'center',
-    marginTop: '2rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   },
+
+  profileContainer: {
+    width: '50%',
+    height: '100%',
+    backgroundColor: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: '0 0 1rem 0 rgba(0, 0, 0, .2)',
+  }
 });
 
 export default UserProfile;
