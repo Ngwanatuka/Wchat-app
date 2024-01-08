@@ -72,7 +72,7 @@ const Body = () => {
   };
 
   // Render Dashboard when the  user is logged in
-  if (isLoggedIn && user) {
+  if (isLoggedIn && user && !isSignUp) {
     return (
       <Dashboard
         userName={user.email}
