@@ -6,6 +6,7 @@ import faceBookIcon from "../assets/facebook.png";
 import googleIcon from "../assets/Google.png";
 import UserProfile from "./UserProfile";
 import Dashboard from "./Dashboard";
+import { auth, googleAuthProvider } from "../firebase";
 
 const Body = () => {
   const [email, setEmail] = useState("");
@@ -21,16 +22,16 @@ const Body = () => {
 
   const signUpFunction = async (email, password) => {
     try {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
       const userObj = {
-        id: 1,
-        email,
-        password,
+        id: userCredential.user.uid,
+        email: userCredential.user.email,
       };
 
-      setUser(userObj)
+      setUser(userObj);
       return userObj;
     } catch (error) {
-      console.log("Sign up error: ", error);
+      console.error("Sign up error: ", error.message);
       return null;
     }
   };
@@ -53,23 +54,32 @@ const Body = () => {
       return;
     }
 
-    console.log("Email: ", email);
-    console.log("Password: ", password);
+    try {
+      if (isSignUp) {
+        const userObject = await signUpFunction(email, password);
 
-    if (isSignUp) {
-      const userObject = await signUpFunction(email, password);
+        if (!userObject) {
+          alert("Sign-up failed");
+          return;
+        }
 
-      if (!userObject) {
-        alert("Sign-up failed");
-        return;
+        setUser(userObject);
+      } else {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        const userObj = {
+          id: userCredential.user.uid,
+          email: userCredential.user.email,
+        };
+
+        setUser(userObj);
       }
 
-      setUser(userObject);
-
+      // Log in successful, set isLoggedIn to true
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.error("Login error: ", error.message);
+      alert("Login failed. Please check your credentials.");
     }
-
-    // Log in successful, set isLoggedIn to true
-    setIsLoggedIn(true);
   };
 
   // Render Dashboard when the  user is logged in

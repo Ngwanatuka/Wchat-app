@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Ngwanatuka/Wchat-app#readme",
   "dependencies": {
+    "firebase": "^10.7.1",
+    "firebaseui": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0"
