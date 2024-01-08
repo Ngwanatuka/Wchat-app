@@ -66,8 +66,6 @@ const Body = () => {
 
       setUser(userObject);
 
-      // Rediect to UserProfile after successful sign up
-      toggleSignUpMode();
     }
 
     // Log in successful, set isLoggedIn to true
