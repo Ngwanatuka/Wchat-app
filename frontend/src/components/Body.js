@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "../styles/font.css";
 import { StyleSheet, css } from "aphrodite";
-import instagramIcon from "../assets/Instagram.png";
-import faceBookIcon from "../assets/facebook.png";
-import googleIcon from "../assets/Google.png";
+// import instagramIcon from "../assets/Instagram.png";
+// import faceBookIcon from "../assets/facebook.png";
+// import googleIcon from "../assets/Google.png";
 import UserProfile from "./UserProfile";
 import Dashboard from "./Dashboard";
-import { auth, googleAuthProvider } from "../firebase";
 
 const Body = () => {
   const [email, setEmail] = useState("");
@@ -135,19 +134,19 @@ const Body = () => {
                   <div className={css(styles.icon)}>
                     <a href="#">
                       {/* Google Icon */}
-                      <img src={googleIcon} alt="Google" />
+                      {/* <img src={googleIcon} alt="Google" /> */}
                     </a>
                   </div>
                   <div className={css(styles.icon)}>
                     <a href="#">
                       {/* Facebook Icon */}
-                      <img src={faceBookIcon} alt="Facebook" />
+                      {/* <img src={faceBookIcon} alt="Facebook" /> */}
                     </a>
                   </div>
                   <div className={css(styles.icon)}>
                     <a href="#">
                       {/* Instagram */}
-                      <img src={instagramIcon} alt="Instagram" />
+                      {/* <img src={instagramIcon} alt="Instagram" /> */}
                     </a>
                   </div>
                 </div>
