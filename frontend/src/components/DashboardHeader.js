@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
+import searchIcon from "../assets/searchIcon.png";
 
 const DashboardHeader = () => {
   return (
@@ -22,11 +23,6 @@ const DashboardHeader = () => {
           placeholder="Search"
           className={css(styles.searchInput)}
         />
-      </div>
-      <div className={css(styles.profilePicture)}>
-        <div className={css(styles.placeholderProfile)}>
-          <i className="fa fa-user"></i>
-        </div>
       </div>
     </div>
   );
@@ -106,7 +102,7 @@ const styles = StyleSheet.create({
     borderBottom: "1px solid rgba(233, 233, 233, 0.50)",
   },
   searchInput: {
-    padding: "8px",
+    padding: "8px 30px 8px 8px",
     border: "none",
     borderRadius: "4px",
     marginRight: "10px",
@@ -116,24 +112,12 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: 300,
     lineHeight: "normal",
-    width: "15.5rem",
+    width: "13.5rem",
     height: "2rem",
-  },
-  profilePicture: {
-    width: "32px",
-    height: "32px",
-    borderRadius: "50%",
-    overflow: "hidden",
-    backgroundColor: "#0986CC",
-  },
-  placeholderProfile: {
-    fontSize: "1.5rem",
-    color: "#ffff",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
+    position: 'relative',
+    '::placeholder': {
+        color: 'rgba(255, 255, 255, 0.6)',
+    },
   },
 });
 
