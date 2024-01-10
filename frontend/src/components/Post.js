@@ -1,9 +1,9 @@
 // Post.js
-import React, { useState, useRef } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React, { useState, useRef } from "react";
+import { StyleSheet, css } from "aphrodite";
 
 const Post = () => {
-  const [postContent, setPostContent] = useState('');
+  const [postContent, setPostContent] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -25,32 +25,21 @@ const Post = () => {
     // You can send the post content and the selected file to your backend or handle it as needed
 
     // Reset form after submission
-    setPostContent('');
+    setPostContent("");
     setSelectedFile(null);
   };
 
   return (
     <div className={css(styles.postContainer)}>
-      <textarea
-        placeholder="What's on your mind?"
-        value={postContent}
-        onChange={handlePostContentChange}
-        className={css(styles.postInput)}
-      />
       <div className={css(styles.attachContainer)}>
-        <div
-          className={css(styles.attachIcon)}
-          onClick={handlePlusSignClick}
-        >
+        <div className={css(styles.attachIcon)} onClick={handlePlusSignClick}>
           {selectedFile ? (
-            // Display the selected file (image, video, etc.)
             <img
               src={URL.createObjectURL(selectedFile)}
               alt="Attached media"
               className={css(styles.attachedMedia)}
             />
           ) : (
-            // Display an icon or placeholder for attaching media
             <div className={css(styles.plusSignContainer)}>
               <div className={css(styles.plusSign)}>+</div>
             </div>
@@ -61,88 +50,110 @@ const Post = () => {
           id="fileInput"
           accept="image/*, video/*"
           ref={fileInputRef}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
           onChange={handleFileChange}
         />
       </div>
-      <button
-        className={css(styles.postButton)}
-        onClick={handlePostSubmit}
-        disabled={!postContent && !selectedFile}
-      >
-        Post
-      </button>
+      <div className={css(styles.textAreaPost)}>
+        <textarea
+          placeholder="What's on your mind?"
+          value={postContent}
+          onChange={handlePostContentChange}
+          className={css(styles.postInput)}
+        />
+        <button
+          className={css(styles.postButton)}
+          onClick={handlePostSubmit}
+          disabled={!postContent && !selectedFile}
+        >
+          Post
+        </button>
+      </div>
     </div>
   );
 };
 
 const styles = StyleSheet.create({
   postContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: '20px',
-    width:'27.3125rem',
-    height: '5.1875rem',
-    flexShrink: '0',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: "20px",
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: "20px",
+    width: "28.3125rem",
+    height: "5.1875rem",
+    flexShrink: "0",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "none",
   },
   postInput: {
-    padding: '10px',
-    marginBottom: '10px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    resize: 'none',
-    width:'19.5rem',
-    height:'2.5625rem',
-    flexShrink: '0',
+    padding: "10px",
+    border: "none",
+    resize: "none",
+    width: "19.5rem",
+    height: "2.5625rem",
+    flexShrink: "0",
+    backgroundColor: "transparent",
   },
   attachContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '10px',
-
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "10px",
   },
   attachIcon: {
-    position: 'relative',
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    overflow: 'hidden',
-    cursor: 'pointer',
-    marginRight: '10px',
-    background: '#ddd',
+    position: "relative",
+    width: "50px",
+    height: "50px",
+    borderRadius: "50%",
+    overflow: "hidden",
+    cursor: "pointer",
+    marginRight: "10px",
+    background: "#ddd",
   },
   plusSignContainer: {
-    position: 'absolute',
-    bottom: '0',
-    right: '0',
-    background: '#0986CC',
-    color: 'white',
-    borderRadius: '50%',
-    width: '20px',
-    height: '20px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    position: "absolute",
+    bottom: "0",
+    right: "0",
+    background: "#0986CC",
+    color: "white",
+    borderRadius: "50%",
+    width: "20px",
+    height: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   plusSign: {
-    fontSize: '1.5rem',
+    fontSize: "1.5rem",
   },
   attachedMedia: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+
+  textAreaPost: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    boxShadow: "1px 1px 4px 0px rgba(9, 134, 204, 0.25) inset",
+    backgroundColor: "#D9D9D9",
+    width: "24.5rem",
+    height: "2.5625rem",
+    flexShrink: "0",
+    borderRadius: "3.125rem",
   },
   postButton: {
-    backgroundColor: '#0986CC',
-    color: 'white',
-    border: 'none',
-    padding: '10px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    width: '4.9375rem',
-    height: '2.375rem',
+    backgroundColor: "#0986CC",
+    color: "white",
+    border: "none",
+    padding: "10px",
+    borderRadius: "3.125rem",
+    cursor: "pointer",
+    width: "4.9375rem",
+    height: "2.375rem",
+    alignSelf: "flex-end",
+
   },
 });
 

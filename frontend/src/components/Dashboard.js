@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     width: "100%",
+    alignItems: "center",
+    backgroundColor: 'F1F1F1',
   },
   mainContent: {
     padding: "20px",
