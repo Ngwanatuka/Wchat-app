@@ -21,30 +21,30 @@ const Body = () => {
 
   const signUpFunction = async (email, password) => {
     try {
-      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
       const userObj = {
-        id: userCredential.user.uid,
-        email: userCredential.user.email,
+        id: 1,
+        email,
+        password,
       };
 
       setUser(userObj);
       return userObj;
     } catch (error) {
-      console.error("Sign up error: ", error.message);
+      console.log('Sign up error: ', error);
       return null;
     }
   };
 
   const handleLogin = async () => {
-    let alertMessage = "";
+    let alertMessage = '';
 
     if (!email || !password) {
-      alertMessage = "Please fill in your email and password";
+      alertMessage = 'Please fill in your email and password';
     } else if (isSignUp) {
       if (!confirmPassword) {
-        alertMessage = "Please confirm your password";
+        alertMessage = 'Please confirm your password';
       } else if (password !== confirmPassword) {
-        alertMessage = "Passwords do not match";
+        alertMessage = 'Passwords do not match';
       }
     }
 
@@ -53,45 +53,26 @@ const Body = () => {
       return;
     }
 
-    try {
-      if (isSignUp) {
-        const userObject = await signUpFunction(email, password);
+    console.log('Email: ', email);
+    console.log('Password: ', password);
 
-        if (!userObject) {
-          alert("Sign-up failed");
-          return;
-        }
+    if (isSignUp) {
+      const userObject = await signUpFunction(email, password);
 
-        setUser(userObject);
-      } else {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        const userObj = {
-          id: userCredential.user.uid,
-          email: userCredential.user.email,
-        };
-
-        setUser(userObj);
+      if (!userObject) {
+        alert('Sign-up failed');
+        return;
       }
 
-      // Log in successful, set isLoggedIn to true
-      setIsLoggedIn(true);
-    } catch (error) {
-      console.error("Login error: ", error.message);
-      alert("Login failed. Please check your credentials.");
-    }
-  };
+      setUser(userObject);
 
-  // Render Dashboard when the  user is logged in
-  if (isLoggedIn && user && !isSignUp) {
-    return (
-      <Dashboard
-        userName={user.email}
-        department="IT"
-        profession="Software Engineer"
-        aboutMe="I am a software engineer"
-      />
-    );
-  }
+      // Redirect to UserProfile after successful sign up
+      toggleSignUpMode();
+    }
+
+    // Log in successful, set isLoggedIn to true
+    // setIsLoggedIn(true);
+  };
 
   return (
     <div className={css(styles.body)}>

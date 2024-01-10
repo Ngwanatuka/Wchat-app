@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { StyleSheet, css } from "aphrodite";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = ({ userEmail }) => {
   const [knownAs, setKnownAs] = useState("");
@@ -8,6 +9,8 @@ const UserProfile = ({ userEmail }) => {
   const [aboutMe, setAboutMe] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
   const fileInputRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleNextButtonClick = () => {
     // Handle the logic for navigating to the dashboard or processing the form data
@@ -98,7 +101,7 @@ const UserProfile = ({ userEmail }) => {
           {/* Next button */}
           <button
             className={css(styles.nextButton)}
-            onClick={handleNextButtonClick}
+            onClick={() => navigate("/dashboard")}
           >
             Next
           </button>
