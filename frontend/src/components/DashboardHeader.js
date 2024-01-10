@@ -47,20 +47,21 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    marginLeft: "30%",
   },
-    homeButton: {
-        color: "#B2E0C7",
-        fontSize: "0.9375rem",
-        fontStyle: "normal",
-        fontWeight: 400,
-        lineHeight: "normal",
-        transition: "background-color 0.2s ease-in-out",
-        ":hover": {
-            backgroundColor: "#35a0f0",
-            color: "#0986CC",
-            borderBottom: "1px solid #0986CC",
-        },
+  homeButton: {
+    color: "#B2E0C7",
+    fontSize: "0.9375rem",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "normal",
+    transition: "background-color 0.2s ease-in-out",
+    ":hover": {
+      backgroundColor: "#35a0f0",
+      color: "#0986CC",
+      borderBottom: "1px solid #0986CC",
     },
+  },
   headerButton: {
     backgroundColor: "#0986CC",
     color: "white",
@@ -74,9 +75,9 @@ const styles = StyleSheet.create({
     lineHeight: "normal",
     transition: "background-color 0.2s ease-in-out",
     ":hover": {
-        backgroundColor: "#35a0f0",
-        color: "0986CC",
-        borderBottom: "1px solid #0986CC",
+      backgroundColor: "#35a0f0",
+      color: "0986CC",
+      borderBottom: "1px solid #0986CC",
     },
   },
   logoContainer: {
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
   },
   placeholderProfile: {
     fontSize: "1.5rem",
-    color: "#ccc",
+    color: "#ffff",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

@@ -1,6 +1,6 @@
-// Post.js
 import React, { useState, useRef } from "react";
 import { StyleSheet, css } from "aphrodite";
+import cameraIcon from "../assets/camera.png";
 
 const Post = () => {
   const [postContent, setPostContent] = useState("");
@@ -32,19 +32,14 @@ const Post = () => {
   return (
     <div className={css(styles.postContainer)}>
       <div className={css(styles.attachContainer)}>
-        <div className={css(styles.attachIcon)} onClick={handlePlusSignClick}>
-          {selectedFile ? (
-            <img
-              src={URL.createObjectURL(selectedFile)}
-              alt="Attached media"
-              className={css(styles.attachedMedia)}
-            />
-          ) : (
-            <div className={css(styles.plusSignContainer)}>
-              <div className={css(styles.plusSign)}>+</div>
-            </div>
-          )}
-        </div>
+        <label htmlFor="fileInput" className={css(styles.attachIconLabel)}>
+          <img
+            src={cameraIcon}
+            alt="Attached media"
+            className={css(styles.attachedMedia)}
+            onClick={handlePlusSignClick}
+          />
+        </label>
         <input
           type="file"
           id="fileInput"
@@ -98,7 +93,9 @@ const styles = StyleSheet.create({
   attachContainer: {
     display: "flex",
     alignItems: "center",
-    marginBottom: "10px",
+    paddingRight: "10px",
+    width: '40px',
+    height: '40px',
   },
   attachIcon: {
     position: "relative",
@@ -153,7 +150,6 @@ const styles = StyleSheet.create({
     width: "4.9375rem",
     height: "2.375rem",
     alignSelf: "flex-end",
-
   },
 });
 
