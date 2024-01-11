@@ -4,7 +4,8 @@ import './App.css'
 import Athentication from './Athentication/Athentication'
 
 function App() {
-  const user = useSelector(state => state.user.user)
+  const user = useSelector(state => state.data.user.user)
+
   console.log(user)
   return (
     <div className='app'>
