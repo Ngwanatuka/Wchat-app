@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, css } from "aphrodite";
+import { StyleSheet, css } from "aphrodite-jss";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreIcon from "@mui/icons-material/Explore";
@@ -92,11 +92,11 @@ const styles = StyleSheet.create({
     padding: "10px 15px 10px 15px",
     borderRadius: "15px",
     width: "100%",
-    ":hover": {
+    "&:hover": {
       cursor: "pointer",
       backgroundColor: "rgba(255, 255, 255, 0.128)",
     },
-    "&> span": {
+    "& span": {
       fontSize: "18px",
       fontWeight: "bold",
       marginLeft: "10px",
