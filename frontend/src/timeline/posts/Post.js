@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "space-between",
-    ":hover": {
+    "&:hover": {
       cursor: "pointer",
     },
   },
