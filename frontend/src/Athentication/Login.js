@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite-jss";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log(email, password);
   return (
     <div className={css(styles.login)}>
       <div className={css(styles.login__logo)}>
@@ -9,16 +13,25 @@ function Login() {
       </div>
       <div className={css(styles.login__form)}>
         <div className={css(styles.login__form__input)}>
-          <input type="text" placeholder="Email" />
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="Email"
+            value={email}
+          />
         </div>
         <div className={css(styles.login__form__input)}>
-          <input type="password" placeholder="Password" />
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Password"
+            value={password}
+          />
         </div>
         <div className={css(styles.login__form__button)}>
           <button>Log in</button>
         </div>
         <div className={css(styles.separator)}>
-
           <span>or</span>
         </div>
       </div>
@@ -99,9 +112,7 @@ const styles = StyleSheet.create({
     },
   },
 
-  separator: {
-   
-  },
+  separator: {},
 });
 
 export default Login;
