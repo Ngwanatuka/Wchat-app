@@ -24,7 +24,8 @@
                   "email": "abdul@alx.com",
                   "lastName": "Dev", 
                   "firstName": "Abdul",
-                  "username": "abdul"
+                  "username": "abdul",
+                  "password": "password123"
                 }
               }
             }
