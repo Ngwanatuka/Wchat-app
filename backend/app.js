@@ -45,7 +45,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 // setup routes
 
 app.use("/api/auth", authRouter);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 
 //Setting Up Server

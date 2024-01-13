@@ -5,7 +5,7 @@ const sendEmail = async ({ to, subject, html }) => {
   const transporter = nodemailer.createTransport(nodemailerConfig);
   transporter.sendMail(
     {
-      from: `Jay Cargo <${process.env.AUTH_EMAIL}>`,
+      from: `Wchat <${process.env.AUTH_EMAIL}>`,
       to,
       subject,
       html,

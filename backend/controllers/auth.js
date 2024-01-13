@@ -21,7 +21,7 @@ const registerClient = async (req, res) => {
     if (userExists)
       return res
         .status(403)
-        .json({ message: "user with that email already exists" });
+        .json({ message: "User with that email already exists" });
 
     // create new user
     await User.create({
