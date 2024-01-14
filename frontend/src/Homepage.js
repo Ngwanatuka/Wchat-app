@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
   },
   homepage__nav: {
     backgroundColor: "#0986CC",
-    flex: "0.3",
+    flex: "0.2",
     display: "flex",
     alignItems: "center",
     color: "white",
   },
 
   homepage__timeline: {
-    flex: "0.7",
+    flex: "0.8",
     display: "flex",
     flexDirection: "column",
   },
