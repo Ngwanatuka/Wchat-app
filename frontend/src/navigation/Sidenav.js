@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "10px",
+    marginLeft: "20px",
+    marginTop: "20px",
     '& svg': {
       fontSize: "4.125rem",
     },

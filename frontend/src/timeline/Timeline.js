@@ -57,6 +57,13 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
   },
+  timeline__posts: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+
   timeline__left: {
     flex: "0.7",
   },
