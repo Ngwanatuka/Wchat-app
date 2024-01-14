@@ -13,7 +13,7 @@ function Post({user, postImage, likes, timestamp}) {
       <div className={css(styles.post__header)}>
         <div className={css(styles.post__headerAuthor)}>
           <Avatar>{user.charAt(0).toUpperCase()}</Avatar>
-          {user} • <span>{timestamp}</span>
+         <div className={css(styles.user__name)}> {user}</div> • <span>{timestamp}</span>
         </div>
         <MoreHorizIcon />
       </div>
@@ -62,7 +62,12 @@ const styles = StyleSheet.create({
     "& span": {
       color: "grey",
       fontSize: "15px",
+      marginLeft: "5px",
     },
+  },
+
+  user__name: {
+    marginLeft: "5px",
   },
 
   post__image: {
