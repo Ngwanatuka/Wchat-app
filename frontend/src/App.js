@@ -12,12 +12,12 @@ function App() {
   console.log(user)
   return (
     <div className='app'>
-    {/* {user ? (
+    {user ? (
       <Homepage />
     ) : (
       <Athentication />
-    )} */}
-    <UserPropfile />
+    )}
+    {/* <UserPropfile /> */}
     </div>
   )
 }

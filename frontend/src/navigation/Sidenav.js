@@ -7,12 +7,14 @@ import ChatIcon from "@mui/icons-material/Chat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import MenuIcon from "@mui/icons-material/Menu";
+import CasesOutlinedIcon from '@mui/icons-material/CasesOutlined';
 
 function sidenav() {
   return (
     <div className={css(styles.sidenav)}>
       <div className={css(styles.logoContainer)}>
         <div className={css(styles.logo)}>
+        <CasesOutlinedIcon />
           <span className={css(styles.logoText)}>Wchat</span>
         </div>
       </div>
@@ -64,6 +66,19 @@ const styles = StyleSheet.create({
     padding: "10px",
     flexDirection: "column",
     height: "100vh",
+    position: "fixed",
+    top: 0,
+    left: 0,
+  },
+
+  logo: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: "10px",
+    '& svg': {
+      fontSize: "4.125rem",
+    },
   },
 
   logoText: {

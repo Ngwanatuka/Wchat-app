@@ -67,8 +67,15 @@ const styles = StyleSheet.create({
 
   post__image: {
     width: "100%",
+    height: "100%",
     borderRadius: "5px",
     border: "0.6px solid lightgrey",
+    overflow: "hidden",
+    "& img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    },
   },
 
   post__footer: {},
@@ -81,7 +88,6 @@ const styles = StyleSheet.create({
   post__footerIcons: {
     display: "flex",
     flexDirection: "row",
-
     alignItems: "center",
     justifyContent: "space-between",
     "&:hover": {
