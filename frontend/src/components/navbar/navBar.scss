@@ -11,6 +11,7 @@
     top: 0;
     background-color:themed("navBar");
     color: themed("topNavText");
+    z-index: 999;
 
     .left {
       display: flex;
