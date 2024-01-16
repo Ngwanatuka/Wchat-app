@@ -8,18 +8,18 @@ body{
 
 $themes: (
   light: (
-    navBar: rgb(6, 153, 245),
-    navSide: rgb(6, 153, 245),
-    rightBar: rgb(6, 153, 245),
-    followBtn: rgb(6, 153, 245),
+    navBar:  rgb(53, 170, 243),
+    navSide: rgb(53, 170, 243),
+    rightBar:  rgb(124, 201, 250),
+    followBtn:  rgb(50, 128, 176),
     leftBarText: whitesmoke,
     topNavText: whitesmoke,
-    textColor: black,
-    bg: white,
+    textColor: whitesmoke,
+    bg:  rgb(124, 201, 250),
     logo: white,
-    bgSoft: #f6f3f3,
+    bgSoft:  rgb(211, 232, 245),
     textColorSoft: #555,
-    border: rgb(119, 221, 233),
+    border: rgba(185, 226, 230, 0.477),
   ),
   dark: (
     followBtn: #6899ee,
