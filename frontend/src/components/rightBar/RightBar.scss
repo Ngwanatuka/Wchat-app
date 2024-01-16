@@ -41,6 +41,7 @@
             align-items: center;
             gap: 20px;
             position: relative;
+            color: themed("textColor");
 
             img {
               width: 40px;
@@ -81,7 +82,7 @@
               cursor: pointer;
 
               &:first-child {
-                background-color: #5271ff;
+                background-color: themed("followBtn");
               }
 
               &:last-child {

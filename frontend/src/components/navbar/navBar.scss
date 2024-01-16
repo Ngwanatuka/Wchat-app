@@ -9,8 +9,8 @@
     border-bottom: 1px solid themed("border");
     position: sticky;
     top: 0;
-    background-color:themed("bg");
-    color: themed("textColor");
+    background-color:themed("navBar");
+    color: themed("topNavText");
 
     .left {
       display: flex;
@@ -18,8 +18,8 @@
       gap: 30px;
 
       span {
-        font-size: 30px;
-        font-weight: bold;
+        font-size: 34px;
+        font-style: normal;
         color: themed("logo");
       }
 
@@ -35,6 +35,7 @@
           outline: none;
           width: 400px;
           background-color: transparent;
+          color: white;
         }
       }
     }

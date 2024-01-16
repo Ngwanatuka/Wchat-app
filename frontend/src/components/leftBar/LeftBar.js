@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./LeftBar.scss";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
@@ -7,18 +7,21 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 import TimerIcon from "@mui/icons-material/Timer";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import MessageIcon from "@mui/icons-material/Message";
+import { AuthContext } from "../../context/authContext";
 
 function LeftBar() {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="leftbar">
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img
-              src="https://images.pexels.com/photos/19776870/pexels-photo-19776870/free-photo-of-woman-wearing-hat-and-blazer-in-black-and-white.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-              alt=""
-            />
-            <span>Username</span>
+            <img src={currentUser.profilePic} alt="" />
+            <div className="info">
+              <span>{currentUser.name}</span>
+              <div className="department">Software Engineer</div>
+            </div>
           </div>
 
           <div className="item">
@@ -54,7 +57,7 @@ function LeftBar() {
           <MessageIcon />
           <span>Messages</span>
         </div>
-        <hr/>
+        <hr />
       </div>
     </div>
   );

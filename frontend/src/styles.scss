@@ -1,13 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body{ 
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
 $themes: (
   light: (
-    textColor: #000,
+    navBar: rgb(6, 153, 245),
+    navSide: rgb(6, 153, 245),
+    rightBar: rgb(6, 153, 245),
+    followBtn: rgb(6, 153, 245),
+    leftBarText: whitesmoke,
+    topNavText: whitesmoke,
+    textColor: black,
     bg: white,
-    logo: rgb(6, 153, 245),
+    logo: white,
     bgSoft: #f6f3f3,
     textColorSoft: #555,
-    border: lightgray,
+    border: rgb(119, 221, 233),
   ),
   dark: (
+    followBtn: #6899ee,
+    topNavText: whitesmoke,
+    leftBarText: whitesmoke,
+    navBar: #2e3b52,
+    navSide: #2e3b52,
+    rightBar: #2e3b52,
     textColor: whitesmoke,
     bg: #2e3b52,
     logo: white,
@@ -30,6 +50,9 @@ $themes: (
           )
         ) !global;
       }
+
+      
+
       @content;
       $theme-map: null !global;
     }
