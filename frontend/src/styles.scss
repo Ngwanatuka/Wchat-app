@@ -8,6 +8,7 @@ body{
 
 $themes: (
   light: (
+    placeholder: #ffffffd3,
     navBar:  rgb(53, 170, 243),
     navSide: rgb(53, 170, 243),
     rightBar:  rgb(124, 201, 250),
@@ -22,6 +23,7 @@ $themes: (
     border: rgba(185, 226, 230, 0.477),
   ),
   dark: (
+    placeholder: #ffffffd3,
     followBtn: #6899ee,
     topNavText: whitesmoke,
     leftBarText: whitesmoke,
