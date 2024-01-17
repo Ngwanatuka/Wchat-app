@@ -7,12 +7,11 @@ const sendVerificationEmail = async ({
   verificationToken,
 }) => {
   const origin = process.env.BASE_URL;
-  const verifyEmail = `${origin}/api/v1/auth/verify-user/${userId}/${verificationToken}`;
+  const verifyEmail = `${origin}/verify-user/${userId}/${verificationToken}`;
 
   const message = `<p>Please confirm your email by clicking on the following link :
   <a href="${verifyEmail}">Verify Email</a> </p>`;
-
-  return sendEmail({
+  await sendEmail({
     to: email,
     subject: "Email Confirmation",
     html: `<h4> Hello, ${name}</h4>

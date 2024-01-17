@@ -4,12 +4,11 @@ const crypto = require("crypto");
 const Token = require("../models/Token");
 const passwordMiddleware = require("../utils/password");
 const {
-  sendVerifyEmail,
-  sendEmail,
   createTokenUser,
   attachCookiesToResponse,
 } = require("../utils/index");
 
+const { emailQueue } = require("../worker");
 // const { TokenError } = require("../errors/index");
 
 const registerClient = async (req, res) => {
@@ -71,18 +70,13 @@ const sendVerificationEmail = async (req, res) => {
     );
 
     // send verification email
-    await sendVerifyEmail({
+    await emailQueue.add("sendVerificationEmail", {
       userId: user._id,
       name: user.firstName,
       email,
       verificationToken,
-    })
-      .then(() => {
-        return res.status(200).json({ message: "verification link sent" });
-      })
-      .catch((err) => {
-        return res.status(500).send(err);
-      });
+    });
+    return res.status(200).json({ message: "verification link sent" });
   } catch (err) {
     return res.status(500).send(err);
   }
@@ -105,18 +99,12 @@ const verifyUser = async (req, res) => {
     user.verificationToken = "";
 
     await user.save();
-    // send verification compelete email
-    await sendEmail({
+    // send email verification complete email
+    await emailQueue.add("sendEmail", {
       to: user.email,
-      subject: "user verification",
-      html: "congratulations, your email verification is complete",
-    })
-      .then(() => console.log("user verified"))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
-
+      subject: "User verification",
+      html: "Congratulations, your account verification is complete",
+    });
     return res.status(200).json({ message: "user verified" });
   } catch (err) {
     console.log(err);
@@ -191,14 +179,14 @@ const requestPasswordReset = async (req, res, next) => {
     user.passwordToken = hash;
     user.passwordTokenExpirationDate = passwordTokenExpirationDate;
     await user.save();
-
-    // send verification email
-    const link = `hostedServerLink/resetpassword?userId=${user._id}&resetToken=${resetPasswordToken}`;
-    await sendEmail(
+  
+    base_url = process.env.BASE_URL
+    const link = `${base_url}/resetpassword?userId=${user._id}&resetToken=${resetPasswordToken}`;
+    await emailQueue.add("sendEmail", {
       email,
-      "password reset",
-      `<p>You are receiving this email because you requested for a password reset. Click this link to reset your password: ${link}</p>`
-    );
+      subject: "password reset",
+      html: `<p>You are receiving this email because you requested for a password reset. Click this link to reset your password: ${link}</p>`,
+    });
 
     return res
       .status(200)

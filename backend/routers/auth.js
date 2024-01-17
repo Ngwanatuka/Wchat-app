@@ -45,7 +45,7 @@ authRouter.post("/logout", logoutUser);
 authRouter.post("/request-password-reset", requestPasswordReset);
 
 authRouter.patch(
-  "/updatepassword/:token",
+  "/update-password/:token",
   validate(validateUpdatePassword, {}, {}),
   updatePassword
 );
