@@ -10,6 +10,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts";
+import Post from "../../components/post/Post";
 
 function Profile() {
   return (
@@ -65,6 +66,7 @@ function Profile() {
             <MoreVertIcon />
           </div>
         </div>
+        <Posts />
       </div>
     </div>
   );
