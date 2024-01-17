@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+$themes: (
+  light: (
+    placeholder: #ffffffd3,
+    navBar: rgb(53, 170, 243),
+    navSide: rgb(53, 170, 243),
+    rightBar: rgb(124, 201, 250),
+    followBtn: rgb(50, 128, 176),
+    leftBarText: whitesmoke,
+    topNavText: whitesmoke,
+    textColor: whitesmoke,
+    bg: rgb(124, 201, 250),
+    logo: white,
+    bgSoft: rgb(211, 232, 245),
+    textColorSoft: #555,
+    border: rgba(185, 226, 230, 0.477),
+  ),
+  dark: (
+    placeholder: #ffffffd3,
+    followBtn: #6899ee,
+    topNavText: whitesmoke,
+    leftBarText: whitesmoke,
+    navBar: #2e3b52,
+    navSide: #2e3b52,
+    rightBar: #2e3b52,
+    textColor: whitesmoke,
+    bg: #2e3b52,
+    logo: white,
+    bgSoft: #495763,
+    textColorSoft: lightgray,
+    border: #4b545a,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
