@@ -7,6 +7,10 @@ import likeRoutes from "./routes/likes.js";
 import authRoutes from "./routes/auth.js";
 
 
+// middleware
+app.use(Express.json());
+
+
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
