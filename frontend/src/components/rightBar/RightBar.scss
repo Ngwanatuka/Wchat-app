@@ -10,10 +10,12 @@
     background-color: themed("bgSoft");
     color: themed("textColor");
 
-    @include mobile {
+    @include mobile{
       display: none;
     }
-
+    @include tablet{
+      display: none;
+    }
     
     &::-webkit-scrollbar {
       display: none;

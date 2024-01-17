@@ -36,10 +36,10 @@ function Stories() {
           <span>{currentUser.name}</span>
           <button>+</button>
         </div>
-      {stories.map(story => (
+        {stories.map(story=>(
         <div className="story" key={story.id}>
-          <img src={stories.img} alt="" />
-          <span>{stories.name}</span>
+          <img src={story.img} alt="" />
+          <span>{story.name}</span>
         </div>
       ))}
     </div>
