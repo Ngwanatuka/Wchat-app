@@ -1,37 +1,282 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
-    "title": "My API",
     "version": "1.0.0",
-    "description": "API documentation using Swagger"
+    "title": "Wchat API",
+    "description": "API for Wchat"
   },
-  "servers": [
-    {
-      "url": "http://localhost:3000",
-      "description": "Local development server"
-    }
-  ],
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
   "paths": {
-    "/api/auth/register": {
-      "get": {
-        "summary": "Create a new user account details",
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "description": "Endpoint to register a new user.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterRequest"
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
+          "201": {
+            "description": "User registered successfully",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            },
+            "examples": {
               "application/json": {
-                "example": {
-                  "email": "abdul@alx.com",
-                  "lastName": "Dev", 
-                  "firstName": "Abdul",
-                  "username": "abdul",
-                  "password": "password123"
-                }
+                "id": "123",
+                "lastName": "Doe",
+                "firstName": "John",
+                "username": "johndoe",
+                "email": "john.doe@example.com"
               }
             }
           }
         }
       }
+    },
+    "/api/auth/send-verification-email": {
+      "post": {
+        "summary": "Send verification email",
+        "description": "Endpoint to send a verification email to a user.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendVerificationEmailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verification link sent successfully",
+            "schema": {
+              "$ref": "#/definitions/SuccessResponse"
+            },
+            "examples": {
+              "application/json": {
+                "message": "verification link sent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/verify-user/{userId}/{token}": {
+      "get": {
+        "summary": "Verify user",
+        "description": "Endpoint to verify a user.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "path",
+            "description": "Verification token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User verified successfully",
+            "schema": {
+              "$ref": "#/definitions/SuccessResponse"
+            },
+            "examples": {
+              "application/json": {
+                "message": "user verified"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "User login",
+        "description": "Endpoint for user login.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": "Success",
+                "message": "Login Successful",
+                "data": {
+                  "user": {
+                    "id": "123",
+                    "lastName": "Doe",
+                    "firstName": "John",
+                    "username": "johndoe",
+                    "email": "john.doe@example.com"
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "Set cookies in the response",
+                "type": "string",
+                "example": "accessToken=abcd1234; Path=/; HttpOnly; SameSite=Lax, refreshToken=efgh5678; Path=/; HttpOnly; SameSite=Lax"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/request-password-reset": {
+      "post": {
+        "summary": "Request password reset",
+        "description": "Endpoint to request a password reset.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PasswordResetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password reset link sent successfully",
+            "examples": {
+              "application/json": {
+                "message": "a password reset link has been sent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/update-password": {
+      "post": {
+        "summary": "Update password",
+        "description": "Endpoint to update user password after a password reset.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePasswordRequest"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "RegisterRequest": {
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["lastName", "firstName", "username", "email", "password"]
+    },
+    "SendVerificationEmailRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": ["email"]
+    },
+    "LoginRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["email", "password"]
+    },
+    "PasswordResetRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": ["email"]
+    },
+    "UpdatePasswordRequest": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": ["password", "token"]
     }
   }
 }
