@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-body{ 
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 $themes: (
   light: (
     placeholder: #ffffffd3,
-    navBar:  rgb(53, 170, 243),
+    navBar: rgb(53, 170, 243),
     navSide: rgb(53, 170, 243),
-    rightBar:  rgb(124, 201, 250),
-    followBtn:  rgb(50, 128, 176),
+    rightBar: rgb(124, 201, 250),
+    followBtn: rgb(50, 128, 176),
     leftBarText: whitesmoke,
     topNavText: whitesmoke,
     textColor: whitesmoke,
-    bg:  rgb(124, 201, 250),
+    bg: rgb(124, 201, 250),
     logo: white,
-    bgSoft:  rgb(211, 232, 245),
+    bgSoft: rgb(211, 232, 245),
     textColorSoft: #555,
     border: rgba(185, 226, 230, 0.477),
   ),
@@ -52,9 +52,6 @@ $themes: (
           )
         ) !global;
       }
-
-      
-
       @content;
       $theme-map: null !global;
     }
