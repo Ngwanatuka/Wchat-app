@@ -10,13 +10,11 @@
       position: relative;
 
       .cover {
-        overflow: hidden;
-        border-radius: 20px;
-
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
+
       .profilePic {
         width: 200px;
         height: 200px;
@@ -31,7 +29,16 @@
     }
     .profileContainer {
       padding: 20px 70px;
-      .userInfo {
+
+      @include mobile{
+        padding: 10px;
+      }
+
+      @include tablet{
+        padding: 20px;
+      }
+
+      .uInfo {
         height: 180px;
         -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
         -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -45,24 +52,37 @@
         justify-content: space-between;
         margin-bottom: 20px;
 
+        @include mobile{
+          flex-direction: column;
+          height: 30vh;
+          padding: 20px;
+          margin-top: 100px;
+        }
+
         .left {
           flex: 1;
           display: flex;
           gap: 10px;
-          
+
+          @include tablet{
+            flex-wrap: wrap;
+          }
+
           a{
             color: themed("textColorSoft");
           }
         }
+
         .center {
           flex: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 10px;
+
           span {
             font-size: 30px;
-            font-weight: 500px;
+            font-weight: 500;
           }
 
           .info {
@@ -71,28 +91,27 @@
             align-items: center;
             justify-content: space-around;
 
-            span {
-              font-size: 12px;
-            }
             .item {
               display: flex;
-              flex-direction: row;
               align-items: center;
               gap: 5px;
               color: themed("textColorSoft");
-            }
 
-            
+              span {
+                font-size: 12px;
+              }
+            }
           }
-          button{
+          button {
             border: none;
-            background-color: themed("followBtn");
+            background-color: #5271ff;
             color: white;
-            cursor: pointer;
-            border-radius: 3px;
             padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
         }
-        }
+
         .right {
           flex: 1;
           display: flex;

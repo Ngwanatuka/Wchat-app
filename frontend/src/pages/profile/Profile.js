@@ -9,10 +9,9 @@ import PlaceIcon from "@mui/icons-material/Place";
 import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Posts from "../../components/posts/Posts";
-import Post from "../../components/post/Post";
+import Posts from "../../components/posts/Posts"
 
-function Profile() {
+const Profile = () => {
   return (
     <div className="profile">
       <div className="images">
@@ -28,7 +27,7 @@ function Profile() {
         />
       </div>
       <div className="profileContainer">
-        <div className="userInfo">
+        <div className="uInfo">
           <div className="left">
             <a href="http://facebook.com">
               <FacebookTwoToneIcon fontSize="large" />
@@ -47,7 +46,6 @@ function Profile() {
             </a>
           </div>
           <div className="center">
-            {" "}
             <span>Jane Doe</span>
             <div className="info">
               <div className="item">
@@ -66,10 +64,10 @@ function Profile() {
             <MoreVertIcon />
           </div>
         </div>
-        <Posts />
+      <Posts/>
       </div>
     </div>
   );
-}
+};
 
 export default Profile;
