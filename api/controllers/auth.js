@@ -1,4 +1,5 @@
 import { db } from "../connect.js";
+import bcrypt from "bcryptjs";
 
 export const login = (req, res) => {
 
@@ -13,7 +14,9 @@ export const login = (req, res) => {
 
     // Create a new user
         // hash the password
-        
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+
 };
 
 export const register = (req, res) => {};
