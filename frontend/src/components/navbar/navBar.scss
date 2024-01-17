@@ -39,7 +39,7 @@
           color: white;
 
           @include mobile {
-            display: none;
+            width: none;
           }
         }
       }
