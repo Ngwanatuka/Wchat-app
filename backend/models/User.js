@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { ObjectId } = mongoose.Schema;
-const User = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -69,5 +69,5 @@ User.methods.comparePassword = async function (inputPassword) {
   const isMatch = await bcrypt.compare(inputPassword, this.password);
   return isMatch;
 };
-const UserModel = mongoose.model("User", User);
-module.exports = UserModel;
+const User = mongoose.model("User", userSchema);
+module.exports = User;
