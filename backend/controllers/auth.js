@@ -4,12 +4,12 @@ const crypto = require("crypto");
 const Token = require("../models/Token");
 const passwordMiddleware = require("../utils/password");
 const {
-  sendVerifyEmail,
   sendEmail,
   createTokenUser,
   attachCookiesToResponse,
 } = require("../utils/index");
 
+const { emailQueue } = require("../worker");
 // const { TokenError } = require("../errors/index");
 
 const registerClient = async (req, res) => {
@@ -71,18 +71,13 @@ const sendVerificationEmail = async (req, res) => {
     );
 
     // send verification email
-    await sendVerifyEmail({
+    await emailQueue.add("sendVerificationEmail", {
       userId: user._id,
       name: user.firstName,
       email,
       verificationToken,
-    })
-      .then(() => {
-        return res.status(200).json({ message: "verification link sent" });
-      })
-      .catch((err) => {
-        return res.status(500).send(err);
-      });
+    });
+    return res.status(200).json({ message: "verification link sent" });
   } catch (err) {
     return res.status(500).send(err);
   }

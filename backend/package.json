@@ -22,11 +22,14 @@
     "url": "https://github.com/Ngwanatuka/Wchat-app/issues"
   },
   "dependencies": {
+    "bull": "^4.12.1",
+    "bull-arena": "^4.1.0",
     "firebase": "^10.7.1",
     "firebaseui": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
+    "redis": "^4.6.12",
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
