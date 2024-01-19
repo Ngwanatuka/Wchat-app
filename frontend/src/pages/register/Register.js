@@ -21,25 +21,24 @@ const Register = () => {
   
     try {
       const response = await axios.post("http://localhost:8800/api/auth/register", inputs);
-      // Check if 'data' property is present in the response
-      if (response.data) {
-        // Handle the successful registration
-      } else {
-        setErr("Unexpected response from the server. Please try again.");
+      // Check if response.data is available before accessing it
+      if (response && response.data) {
+        // Handle the response data as needed
       }
     } catch (err) {
+      // Check if err.response exists before accessing its data property
       if (err.response && err.response.data) {
-        // Handle specific error from the server
         setErr(err.response.data);
       } else {
-        // Handle generic error
-        setErr("An unexpected error occurred. Please try again.");
+        // Handle other errors
+        console.error("Error:", err.message);
       }
     }
   };
   
 
   console.log(err)
+
 
   return (
     <div className="register">

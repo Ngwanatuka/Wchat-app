@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 app.use(Express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:9000",
   })
 );
 app.use(cookieParser());

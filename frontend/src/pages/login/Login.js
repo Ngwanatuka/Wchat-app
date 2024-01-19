@@ -21,15 +21,12 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(inputs);
-      navigate("/");
+      navigate("/")
     } catch (err) {
-      if (err.response && err.response.data) {
-        setErr(err.response.data);
-      } else {
-        setErr("An unexpected error occurred. Please try again.");
-      }
+      setErr(err.response.data);
     }
   };
+
 
   return (
     <div className="login">

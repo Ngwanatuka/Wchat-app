@@ -16,6 +16,8 @@ import "./styles.scss";
 import React,{ useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 function App() {
   const {currentUser} = useContext(AuthContext);
