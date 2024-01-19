@@ -23,6 +23,9 @@ function App() {
 
   const { darkMode } = useContext(DarkModeContext);
 
+  const queryClient = new QueryClient();
+
+
   const Layout = () => {
     return (
       <QueryClientProvider client={queryClient}>
