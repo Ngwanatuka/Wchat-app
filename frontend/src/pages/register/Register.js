@@ -18,13 +18,26 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-
+  
     try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
+      const response = await axios.post("http://localhost:8800/api/auth/register", inputs);
+      // Check if 'data' property is present in the response
+      if (response.data) {
+        // Handle the successful registration
+      } else {
+        setErr("Unexpected response from the server. Please try again.");
+      }
     } catch (err) {
-      setErr(err.response.data);
+      if (err.response && err.response.data) {
+        // Handle specific error from the server
+        setErr(err.response.data);
+      } else {
+        // Handle generic error
+        setErr("An unexpected error occurred. Please try again.");
+      }
     }
   };
+  
 
   console.log(err)
 

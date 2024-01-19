@@ -21,9 +21,13 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(inputs);
-      navigate("/")
+      navigate("/");
     } catch (err) {
-      setErr(err.response.data);
+      if (err.response && err.response.data) {
+        setErr(err.response.data);
+      } else {
+        setErr("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
@@ -31,7 +35,7 @@ const Login = () => {
     <div className="login">
       <div className="card">
         <div className="left">
-          <h1>Hello World.</h1>
+          <h1>Welcome to Wchat</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
             alias totam numquam ipsa exercitationem dignissimos, error nam,
