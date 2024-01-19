@@ -1,10 +1,12 @@
 import React from "react";
 import "./posts.scss";
 import Post from "../post/Post";
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
 
 function Posts() {
 
-  
+
 
   return <div className="posts">
     {posts.map(post=> (
