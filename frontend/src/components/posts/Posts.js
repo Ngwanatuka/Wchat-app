@@ -4,20 +4,22 @@ import Post from "../post/Post";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 
-function Posts() {
-  const { isLoading, error, data } = useQuery(["posts"], () =>
-    makeRequest.get("/posts").then((res) => {
-      return res.data;
-    })
-  );
+function Posts({ userId }) {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["posts", { userId }],
+    queryFn: () =>
+      makeRequest.get(`/posts?userId=${userId}`).then((res) => {
+        return res.data;
+      }),
+  });
 
   return (
     <div className="posts">
-      {/* {error
+      {error
         ? "Something went wrong!"
         : isLoading
         ? "loading"
-        : data.map((post) => <Post post={post} key={post.id} />)} */}
+        : data.map((post) => <Post post={post} key={post.id} />)}
     </div>
   );
 }
