@@ -9,8 +9,7 @@ import Comments from "../comments/Comments";
 import React, { useState } from "react";
 
 const Post = ({ post }) => {
-  console.log('post:', post);
-  console.log('post.desc:', post.desc);
+  
   const [commentOpen, setCommentOpen] = useState(false);
 
   //TEMPORARY
@@ -32,10 +31,7 @@ const Post = ({ post }) => {
               <span className="date">1 min ago</span>
             </div>
           </div>
-          <div className="content">
-            <p>{post.desc}</p>
-            <img src={"/upload/" + post.img} alt="" />
-          </div>
+        
           <MoreHorizIcon />
         </div>
         <div className="content">
