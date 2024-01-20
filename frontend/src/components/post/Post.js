@@ -6,9 +6,11 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
-import React ,{ useState } from "react";
+import React, { useState } from "react";
 
 const Post = ({ post }) => {
+  console.log('post:', post);
+  console.log('post.desc:', post.desc);
   const [commentOpen, setCommentOpen] = useState(false);
 
   //TEMPORARY
@@ -29,6 +31,10 @@ const Post = ({ post }) => {
               </Link>
               <span className="date">1 min ago</span>
             </div>
+          </div>
+          <div className="content">
+            <p>{post.desc}</p>
+            <img src={"/upload/" + post.img} alt="" />
           </div>
           <MoreHorizIcon />
         </div>
